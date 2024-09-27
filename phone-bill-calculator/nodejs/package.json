@@ -1,0 +1,21 @@
+{
+  "name": "phone-bill-calculator",
+  "version": "1.0.0",
+  "description": "nodejs-oop-phone-bill-calculator",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf build && tsc -p ./tsconfig.build.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "yanggwangseong",
+    "email": "soaw83@gmail.com",
+    "url": "https://github.com/yanggwangseong"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4"
+  }
+}
