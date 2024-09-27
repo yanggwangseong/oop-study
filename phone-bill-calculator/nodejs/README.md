@@ -37,8 +37,8 @@
 
 ## 📝 메모
 
-- 상속을 사용하여 구현 [./src/inheritance.ts](코드 보기)
-- 조합을 사용하여 구현 [./src/composition.ts](코드 보기)
+- 상속을 사용하여 구현 [코드 보기](./src/inheritance.ts)
+- 조합을 사용하여 구현 [코드 보기](./src/composition.ts)
 
 ## 📚 참고 자료
 
