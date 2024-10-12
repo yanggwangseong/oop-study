@@ -16,6 +16,19 @@ import { NightlyDiscountPolicyService } from './rate-policies/nightly-discount-p
         return new RegularPolicyService(Money.wons(5), 10);
       },
     },
+    /**
+     * 심야 할인 요금제의 규칙에 따라 통화 요금 계산
+     */
+    {
+      provide: 'NIGHTLY_DISCOUNT_POLICY',
+      useFactory: () => {
+        return new NightlyDiscountPolicyService(
+          Money.wons(2),
+          Money.wons(5),
+          10,
+        );
+      },
+    },
   ],
 })
 export class BillingModule {}

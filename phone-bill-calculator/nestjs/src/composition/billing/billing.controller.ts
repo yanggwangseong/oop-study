@@ -7,6 +7,8 @@ import { Call } from './entities/call.entity';
 export class BillingController {
   constructor(
     @Inject('REGULAR_POLICY') private readonly regularPolicy: RatePolicy,
+    @Inject('NIGHTLY_DISCOUNT_POLICY')
+    private readonly nightlyDiscountPolicy: RatePolicy,
   ) {}
   @Get('regular-calculate')
   calculateFee(): string {
@@ -26,6 +28,24 @@ export class BillingController {
     );
 
     const fee = phone.calculateFee();
-    return `총 요금은 ${fee.Amount}원 입니다.`;
+    return `총 요금은 ${fee.Amount}원 입니다.`; // 60원 나와야 됨.
+  }
+
+  @Get('nightly-calculate')
+  nightlyCalculateFee() {
+    const phone = new Phone(this.nightlyDiscountPolicy);
+    /**
+     * 10시 이후 통화 계산
+     */
+    phone.Calls.push(
+      new Call(new Date(2018, 0, 1, 22, 0, 0), new Date(2018, 0, 1, 22, 0, 40)),
+    ); // 10시 이후 40초 통화
+
+    phone.Calls.push(
+      new Call(new Date(2018, 0, 1, 22, 0, 0), new Date(2018, 0, 1, 22, 0, 50)),
+    ); // 10시 이후 50초 통화
+
+    const fee = phone.calculateFee();
+    return `총 요금은 ${fee.Amount}원 입니다.`; // 18원 나와야 됨.
   }
 }
